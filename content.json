@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "siteTitle": "陳小王 | 影片剪輯師",
+    "siteDescription": "專業影片剪輯師，擅長商業廣告、Vlog、婚禮影片製作",
+    "ogImage": "assets/images/og-image.jpg",
+    "themeColor": "#7c3aed"
+  },
+
+  "nav": {
+    "logo": "Amy Studio",
+    "links": [
+      { "label": "關於我", "href": "#hero" },
+      { "label": "作品集", "href": "#portfolio" },
+      { "label": "服務項目", "href": "#services" },
+      { "label": "聯絡我", "href": "#contact" }
+    ]
+  },
+
+  "hero": {
+    "name": "陳小尾",
+    "title": "影片剪輯師 / 視覺敘事者",
+    "tagline": "讓每一幀畫面說話，用影像傳遞你的故事",
+    "description": "擁有 5 年商業影片後製經驗，服務過 50+ 品牌客戶。專精 Premiere Pro、After Effects，從婚禮紀錄到企業宣傳影片，提供完整的後製解決方案。",
+    "avatar": "assets/images/avatar.jpg",
+    "avatarAlt": "陳小明個人照",
+    "ctaButtons": [
+      { "label": "查看作品集", "href": "#portfolio", "style": "primary" },
+      { "label": "立即聯絡", "href": "#contact", "style": "secondary" }
+    ],
+    "stats": [
+      { "value": "5+", "label": "年經驗" },
+      { "value": "50+", "label": "合作品牌" },
+      { "value": "200+", "label": "完成專案" },
+      { "value": "98%", "label": "客戶滿意度" }
+    ],
+    "socialLinks": [
+      { "platform": "YouTube", "href": "https://youtube.com/@yourchannel", "icon": "youtube" },
+      { "platform": "Instagram", "href": "https://instagram.com/yourhandle", "icon": "instagram" },
+      { "platform": "LinkedIn", "href": "https://linkedin.com/in/yourprofile", "icon": "linkedin" }
+    ]
+  },
+
+  "portfolio": {
+    "sectionTitle": "精選作品",
+    "sectionSubtitle": "每個專案背後都有一個值得訴說的故事",
+    "categories": ["全部", "商業廣告", "婚禮影片", "Vlog", "音樂MV"],
+    "items": [
+      {
+        "id": "p001",
+        "title": "品牌形象影片 - 科技新創公司",
+        "category": "商業廣告",
+        "description": "為科技新創公司打造的企業形象影片，強調創新與未來感",
+        "youtubeId": "dQw4w9WgXcQ",
+        "duration": "2:30",
+        "tags": ["企業形象", "科技", "動態圖形"],
+        "featured": true
+      },
+      {
+        "id": "p002",
+        "title": "婚禮紀錄 - Jason & Emily",
+        "category": "婚禮影片",
+        "description": "記錄兩人相遇到步入禮堂的感動時刻，每個細節都充滿溫度",
+        "youtubeId": "dQw4w9WgXcQ",
+        "duration": "8:45",
+        "tags": ["婚禮", "紀錄片", "情感"],
+        "featured": true
+      },
+      {
+        "id": "p003",
+        "title": "日本京都旅遊 Vlog",
+        "category": "Vlog",
+        "description": "五天四夜京都深度旅遊，捕捉古都的晨昏與細節",
+        "youtubeId": "dQw4w9WgXcQ",
+        "duration": "15:20",
+        "tags": ["旅遊", "Vlog", "日本"],
+        "featured": false
+      },
+      {
+        "id": "p004",
+        "title": "獨立樂團音樂MV",
+        "category": "音樂MV",
+        "description": "搖滾樂團首張EP主打歌MV，工業風格視覺設計",
+        "youtubeId": "dQw4w9WgXcQ",
+        "duration": "4:10",
+        "tags": ["音樂MV", "搖滾", "工業風"],
+        "featured": false
+      },
+      {
+        "id": "p005",
+        "title": "美妝品牌社群廣告",
+        "category": "商業廣告",
+        "description": "系列社群廣告素材，包含 IG Reels 與 YouTube Shorts 多規格輸出",
+        "youtubeId": "dQw4w9WgXcQ",
+        "duration": "0:30",
+        "tags": ["社群廣告", "美妝", "Reels"],
+        "featured": false
+      },
+      {
+        "id": "p006",
+        "title": "婚禮紀錄 - Kevin & Lisa",
+        "category": "婚禮影片",
+        "description": "戶外草坪婚禮，自然光線下的浪漫時刻完整記錄",
+        "youtubeId": "dQw4w9WgXcQ",
+        "duration": "7:20",
+        "tags": ["婚禮", "戶外", "浪漫"],
+        "featured": false
+      }
+    ]
+  },
+
+  "services": {
+    "sectionTitle": "服務項目",
+    "sectionSubtitle": "從素材到成品，提供一站式後製服務",
+    "items": [
+      {
+        "id": "s001",
+        "icon": "film",
+        "title": "商業廣告剪輯",
+        "description": "品牌形象影片、產品介紹、社群媒體廣告素材，協助品牌建立專業視覺形象。",
+        "features": ["15秒~5分鐘各規格", "多平台尺寸輸出", "字幕/字卡設計", "色彩調校"],
+        "price": "起價 NT$8,000",
+        "highlighted": false
+      },
+      {
+        "id": "s002",
+        "icon": "heart",
+        "title": "婚禮影片製作",
+        "description": "完整記錄婚禮中的每個感動瞬間，精心剪輯成永久珍藏的影像故事。",
+        "features": ["精華版 5~8 分鐘", "完整版影片", "調色處理", "背景音樂授權"],
+        "price": "起價 NT$15,000",
+        "highlighted": true
+      },
+      {
+        "id": "s003",
+        "icon": "play",
+        "title": "YouTube 頻道後製",
+        "description": "Vlog、教學、開箱等內容定期剪輯，幫助 YouTuber 維持穩定更新頻率。",
+        "features": ["月固定方案", "縮圖設計", "片頭/片尾製作", "字幕製作"],
+        "price": "月費方案 NT$5,000 起",
+        "highlighted": false
+      },
+      {
+        "id": "s004",
+        "icon": "music",
+        "title": "音樂MV製作",
+        "description": "與視覺導演合作，提供專業音樂MV後製剪輯、調色與視覺特效。",
+        "features": ["劇情/舞台版本", "視覺特效合成", "Lyric Video", "多版本剪輯"],
+        "price": "起價 NT$20,000",
+        "highlighted": false
+      }
+    ]
+  },
+
+  "contact": {
+    "sectionTitle": "聯絡我",
+    "sectionSubtitle": "有任何合作洽詢，歡迎留下訊息，我會在 24 小時內回覆",
+    "email": "hello@cmstudio.tw",
+    "phone": "+886-912-345-678",
+    "lineId": "@cmstudio",
+    "location": "台北市，可遠端協作",
+    "responseTime": "通常於 24 小時內回覆",
+    "formspreeEndpoint": "https://formspree.io/f/your-form-id",
+    "formFields": [
+      { "name": "name", "label": "您的姓名", "type": "text", "required": true, "placeholder": "請輸入姓名" },
+      { "name": "email", "label": "電子郵件", "type": "email", "required": true, "placeholder": "your@email.com" },
+      {
+        "name": "projectType",
+        "label": "專案類型",
+        "type": "select",
+        "required": true,
+        "placeholder": "請選擇專案類型",
+        "options": ["商業廣告", "婚禮影片", "YouTube後製", "音樂MV", "其他"]
+      },
+      {
+        "name": "budget",
+        "label": "預算範圍",
+        "type": "select",
+        "required": false,
+        "placeholder": "請選擇預算範圍（選填）",
+        "options": ["NT$5,000 以下", "NT$5,000~15,000", "NT$15,000~30,000", "NT$30,000 以上", "待討論"]
+      },
+      { "name": "message", "label": "專案說明", "type": "textarea", "required": true, "placeholder": "請簡述您的專案需求、時程規劃等..." }
+    ]
+  },
+
+  "footer": {
+    "copyright": "© 2026 CM Studio. All rights reserved.",
+    "tagline": "用影像述說每一個獨特的故事"
+  }
+}

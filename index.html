@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <title></title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease-out forwards',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+          },
+        }
+      },
+      safelist: [
+        'from-purple-600', 'via-blue-500', 'to-pink-500',
+        'bg-gradient-to-r', 'bg-gradient-to-br',
+        'text-transparent', 'bg-clip-text',
+        'scale-105', 'shadow-2xl',
+      ]
+    }
+  </script>
+
+  <style>
+    /* ── CSS 變數：亮色模式 ── */
+    :root {
+      --bg-page:          #ffffff;
+      --bg-hero:          linear-gradient(135deg, #f5f3ff 0%, #ffffff 50%, #fdf2f8 100%);
+      --bg-section-alt:   linear-gradient(to bottom, #f8f7ff, #fff5f8);
+      --bg-card:          #ffffff;
+      --bg-card-border:   #f3f4f6;
+      --bg-input:         #f9fafb;
+      --bg-social-btn:    #ffffff;
+      --bg-contact-info:  linear-gradient(135deg, #f5f3ff, #fdf2f8);
+      --bg-cat-inactive:  #f3f4f6;
+      --bg-navbar-glass:  rgba(255,255,255,0.85);
+      --bg-footer:        #111827;
+      --bg-empty-state:   transparent;
+
+      --text-primary:     #1f2937;
+      --text-secondary:   #6b7280;
+      --text-muted:       #9ca3af;
+      --text-label:       #374151;
+      --text-cat-inactive:#4b5563;
+      --text-footer:      #ffffff;
+      --text-empty:       #9ca3af;
+
+      --border-input:     #e5e7eb;
+      --border-card:      #f3f4f6;
+      --border-contact:   rgba(255,255,255,0.6);
+
+      --shadow-card:      0 4px 20px rgba(0,0,0,0.08);
+      --shadow-navbar:    0 1px 20px rgba(0,0,0,0.08);
+
+      --toggle-track:     #e5e7eb;
+      --toggle-thumb:     #ffffff;
+    }
+
+    /* ── CSS 變數：暗色模式（剪輯師調色台風格）── */
+    html.dark {
+      --bg-page:          #0d0d14;
+      --bg-hero:          linear-gradient(135deg, #13131e 0%, #0d0d14 50%, #18102e 100%);
+      --bg-section-alt:   linear-gradient(to bottom, #11111c, #0d0d14);
+      --bg-card:          #1a1a2e;
+      --bg-card-border:   #2a2a44;
+      --bg-input:         #1e1e38;
+      --bg-social-btn:    #1a1a2e;
+      --bg-contact-info:  linear-gradient(135deg, #1a1a2e, #200d35);
+      --bg-cat-inactive:  #1a1a2e;
+      --bg-navbar-glass:  rgba(13,13,20,0.92);
+      --bg-footer:        #08080f;
+      --bg-empty-state:   transparent;
+
+      --text-primary:     #e2e8f0;
+      --text-secondary:   #9090b0;
+      --text-muted:       #5a5a78;
+      --text-label:       #c8c8e0;
+      --text-cat-inactive:#8888aa;
+      --text-footer:      #e2e8f0;
+      --text-empty:       #5a5a78;
+
+      --border-input:     #2d2d48;
+      --border-card:      #2a2a44;
+      --border-contact:   rgba(255,255,255,0.08);
+
+      --shadow-card:      0 4px 24px rgba(0,0,0,0.4);
+      --shadow-navbar:    0 1px 20px rgba(0,0,0,0.4);
+
+      --toggle-track:     #2a2a44;
+      --toggle-thumb:     #7c3aed;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Scroll 淡入動畫 ── */
+    .observe-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .observe-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── 漸層文字 ── */
+    .gradient-text {
+      background: linear-gradient(to right, #7c3aed, #3b82f6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── 頭像漸層邊框 ── */
+    .avatar-ring {
+      background: linear-gradient(135deg, #7c3aed, #3b82f6, #ec4899);
+      padding: 4px;
+      border-radius: 9999px;
+    }
+
+    /* ── 主漸層按鈕 ── */
+    .btn-primary {
+      background: linear-gradient(to right, #7c3aed, #3b82f6, #ec4899);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── 卡片浮起效果 ── */
+    .card-hover {
+      background-color: var(--bg-card);
+      border-color: var(--bg-card-border);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* ── Portfolio 分類篩選 ── */
+    .cat-btn {
+      background-color: var(--bg-cat-inactive);
+      color: var(--text-cat-inactive);
+      transition: background 0.2s, color 0.2s;
+    }
+    .cat-btn:hover {
+      background-color: rgba(124, 58, 237, 0.12);
+      color: #7c3aed;
+    }
+    .cat-btn.active {
+      background: linear-gradient(to right, #7c3aed, #ec4899);
+      color: white;
+    }
+
+    /* ── 服務推薦卡片 ── */
+    .service-highlight {
+      background: linear-gradient(135deg, #7c3aed, #3b82f6, #ec4899);
+      color: white;
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.35);
+    }
+    .service-highlight .service-feature-check { color: white; }
+    .service-highlight .service-price { color: rgba(255,255,255,0.9); }
+
+    /* ── Navbar 毛玻璃 ── */
+    .navbar-glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: var(--bg-navbar-glass) !important;
+      box-shadow: var(--shadow-navbar);
+    }
+
+    /* ── 表單輸入框 ── */
+    .form-input {
+      background-color: var(--bg-input);
+      border-color: var(--border-input);
+      color: var(--text-primary);
+      transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+    }
+    .form-input::placeholder { color: var(--text-muted); }
+
+    /* ── 主題切換按鈕 ── */
+    .theme-toggle-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-cat-inactive);
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s, transform 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .theme-toggle-btn:hover {
+      background: rgba(124, 58, 237, 0.15);
+      color: #7c3aed;
+      transform: rotate(20deg);
+    }
+    .theme-toggle-btn svg {
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    /* ── Section 背景 ── */
+    #portfolio  { background-color: var(--bg-page); }
+    #contact    { background-color: var(--bg-page); }
+    #services   { background: var(--bg-section-alt); }
+
+    /* ── 載入遮罩 ── */
+    #loading {
+      background-color: var(--bg-page);
+      transition: opacity 0.4s ease;
+    }
+
+    /* ── Back to top ── */
+    #back-to-top {
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+    #back-to-top:hover { transform: translateY(-2px); }
+
+    /* ── 頁面切換過渡 ── */
+    * { transition: background-color 0.3s ease, border-color 0.3s ease; }
+    /* 避免所有 transition 套用到 transform 造成動畫干擾 */
+    a, button, .card-hover, .cat-btn, .observe-fade, .btn-primary {
+      transition-property: background-color, border-color, color, opacity, transform, box-shadow;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300"></nav>
+
+  <!-- Main Content -->
+  <main>
+    <section id="hero"      class="min-h-screen flex items-center"></section>
+    <section id="portfolio" class="py-20"></section>
+    <section id="services"  class="py-20"></section>
+    <section id="contact"   class="py-20"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="py-8"></footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top"
+    class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full btn-primary text-white flex items-center justify-center shadow-lg opacity-0 pointer-events-none"
+    aria-label="回到頂部">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- Loading Overlay -->
+  <div id="loading" class="fixed inset-0 flex flex-col items-center justify-center z-50">
+    <div class="w-12 h-12 rounded-full border-4 border-purple-200 border-t-purple-600 animate-spin mb-4"></div>
+    <p class="text-sm" style="color: var(--text-muted)">載入中...</p>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
