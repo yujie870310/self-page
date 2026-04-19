@@ -29,8 +29,7 @@
     ],
     "socialLinks": [
       { "platform": "YouTube", "href": "https://youtube.com/@yourchannel", "icon": "youtube" },
-      { "platform": "Instagram", "href": "https://instagram.com/yourhandle", "icon": "instagram" },
-      { "platform": "LinkedIn", "href": "https://linkedin.com/in/yourprofile", "icon": "linkedin" }
+      { "platform": "Instagram", "href": "https://instagram.com/yourhandle", "icon": "instagram" }
     ]
   },
 
@@ -131,7 +130,7 @@
         "description": "Vlog、教學、開箱等內容定期剪輯，幫助 YouTuber 維持穩定更新頻率。",
         "features": ["月固定方案", "縮圖設計", "片頭/片尾製作", "字幕製作"],
         "price": "月費方案 NT$5,000 起",
-        "highlighted": false
+        "highlighted": true
       },
       {
         "id": "s004",
@@ -147,11 +146,11 @@
 
   "contact": {
     "sectionTitle": "聯絡我",
-    "sectionSubtitle": "有任何合作洽詢，歡迎留下訊息，我會在 24 小時內回覆",
-    "email": "hello@cmstudio.tw",
-    "phone": "+886-912-345-678",
+    "sectionSubtitle": "有任何合作洽詢，歡迎留下訊息",
+    "email": "pigpighopepigpighope@gmail.com",
+    "phone": "0905-334-428",
     "lineId": "@cmstudio",
-    "location": "台北市，可遠端協作",
+    "location": "雙北市，可遠端協作",
     "responseTime": "通常於 24 小時內回覆"
   },
 
