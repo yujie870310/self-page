@@ -224,7 +224,7 @@
     return items.map(item => `
       <a href="${getYouTubeUrl(item.youtubeId)}" target="_blank" rel="noopener noreferrer"
         class="group block rounded-2xl overflow-hidden border card-hover"
-        style="border-color:var(--border-card)">
+        style="border-color:var(--border-card)${item.featured ? '; box-shadow:0 0 0 2px #7c3aed' : ''}">
         <!-- Thumbnail -->
         <div class="relative aspect-video overflow-hidden" style="background:var(--bg-input)">
           <img src="${getYouTubeThumbnail(item.youtubeId)}" alt="${item.title}"
@@ -242,6 +242,8 @@
           <span class="absolute bottom-2 right-2 bg-black/75 text-white text-xs px-2 py-0.5 rounded font-mono">${item.duration}</span>
           <span class="absolute top-2 left-2 text-xs px-2.5 py-1 rounded-full font-medium text-white"
             style="background:linear-gradient(to right,#7c3aed,#ec4899)">${item.category}</span>
+          ${item.featured ? `<span class="absolute top-2 right-2 text-xs px-2 py-0.5 rounded-full font-bold"
+            style="background:#facc15; color:#713f12">⭐ 精選</span>` : ''}
         </div>
         <!-- Info -->
         <div class="p-4">
@@ -260,9 +262,10 @@
   }
 
   function filterPortfolio(category) {
-    const items = category === '全部'
+    const pool = category === '全部'
       ? allPortfolioItems
       : allPortfolioItems.filter(i => i.category === category);
+    const items = [...pool].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
     $('portfolio-grid').innerHTML = buildPortfolioGrid(items);
     initObserver();
   }
@@ -286,7 +289,7 @@
         </div>
 
         <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          ${buildPortfolioGrid(allPortfolioItems)}
+          ${buildPortfolioGrid([...allPortfolioItems].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)))}
         </div>
       </div>
     `;
