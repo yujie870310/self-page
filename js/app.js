@@ -137,7 +137,10 @@
 
   // ── Hero ──────────────────────────────────────────────
   function renderHero(hero) {
-    const socialHtml = hero.socialLinks.map(s => `
+    const ytLink = hero.socialLinks.find(s => s.icon === 'youtube');
+    const otherSocials = hero.socialLinks.filter(s => s.icon !== 'youtube');
+
+    const socialHtml = otherSocials.map(s => `
       <a href="${s.href}" target="_blank" rel="noopener noreferrer" aria-label="${s.platform}"
         class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200"
         style="background:var(--bg-social-btn); color:var(--text-secondary); box-shadow:0 2px 8px rgba(0,0,0,0.12)"
@@ -146,6 +149,17 @@
         ${icons[s.icon] || ''}
       </a>
     `).join('');
+
+    const ytBtnHtml = ytLink ? `
+      <a href="${ytLink.href}" target="_blank" rel="noopener noreferrer"
+        class="flex items-center gap-2 font-bold px-5 py-3 rounded-full text-sm sm:text-base inline-flex border-2 transition-all duration-200"
+        style="border-color:#ff0000; color:#ff0000"
+        onmouseover="this.style.background='rgba(255,0,0,0.08)'; this.style.boxShadow='0 4px 16px rgba(255,0,0,0.15)'"
+        onmouseout="this.style.background='transparent'; this.style.boxShadow='none'">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        作品集 YouTube 頻道
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>` : '';
 
     const ctaHtml = hero.ctaButtons.map(btn => {
       if (btn.style === 'primary') {
@@ -180,7 +194,7 @@
               <p class="text-lg sm:text-xl font-medium mb-3" style="color:var(--text-secondary)">${hero.title}</p>
               <p class="leading-relaxed mb-8 max-w-lg" style="color:var(--text-secondary)">${hero.description}</p>
 
-              <div class="flex flex-wrap gap-4 mb-8">${ctaHtml}</div>
+              <div class="flex flex-wrap gap-3 mb-8">${ctaHtml}${ytBtnHtml}</div>
               <div class="flex gap-3">${socialHtml}</div>
             </div>
 
