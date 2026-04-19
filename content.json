@@ -28,8 +28,7 @@
       { "label": "立即聯絡", "href": "#contact", "style": "secondary" }
     ],
     "socialLinks": [
-      { "platform": "YouTube", "href": "待更新網址", "icon": "youtube" },
-      { "platform": "Instagram", "href": "待更新網址", "icon": "instagram" }
+      { "platform": "YouTube", "href": "https://www.youtube.com/playlist?list=PLtpr9dlCi05XBxnBYaHCRACfP4cLDdH2L", "icon": "youtube" }
     ]
   },
 
