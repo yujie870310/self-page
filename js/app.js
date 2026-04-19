@@ -363,138 +363,38 @@
     ];
 
     const infoHtml = infoItems.map(item => `
-      <div class="flex items-start gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+      <div class="flex flex-col items-center gap-3 rounded-2xl p-6 observe-fade"
+        style="background:var(--bg-card); border:1px solid var(--border-card); box-shadow:var(--shadow-card)">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center"
           style="background:rgba(124,58,237,0.12); color:#7c3aed">
           ${icons[item.icon] || ''}
         </div>
-        <div>
-          <p class="text-xs mb-0.5" style="color:var(--text-muted)">${item.label}</p>
-          ${item.href
-            ? `<a href="${item.href}" class="font-medium transition-colors" style="color:var(--text-primary)"
-                onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='var(--text-primary)'">${item.value}</a>`
-            : `<p class="font-medium" style="color:var(--text-primary)">${item.value}</p>`
-          }
-        </div>
+        <p class="text-xs font-medium" style="color:var(--text-muted)">${item.label}</p>
+        ${item.href
+          ? `<a href="${item.href}" class="font-semibold text-center transition-colors" style="color:var(--text-primary)"
+              onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='var(--text-primary)'">${item.value}</a>`
+          : `<p class="font-semibold text-center" style="color:var(--text-primary)">${item.value}</p>`
+        }
       </div>
     `).join('');
 
-    const fieldsHtml = contact.formFields.map(field => {
-      const baseClass = 'form-input w-full border rounded-xl px-4 py-3 text-sm';
-      const req = field.required ? 'required' : '';
-
-      if (field.type === 'textarea') {
-        return `
-          <div>
-            <label class="block text-sm font-medium mb-1.5" style="color:var(--text-label)">
-              ${field.label} ${field.required ? '<span style="color:#ec4899">*</span>' : ''}
-            </label>
-            <textarea name="${field.name}" ${req} rows="4" placeholder="${field.placeholder}"
-              class="${baseClass} resize-none"></textarea>
-          </div>`;
-      }
-      if (field.type === 'select') {
-        return `
-          <div>
-            <label class="block text-sm font-medium mb-1.5" style="color:var(--text-label)">
-              ${field.label} ${field.required ? '<span style="color:#ec4899">*</span>' : ''}
-            </label>
-            <select name="${field.name}" ${req} class="${baseClass} cursor-pointer">
-              <option value="">${field.placeholder}</option>
-              ${field.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-            </select>
-          </div>`;
-      }
-      return `
-        <div>
-          <label class="block text-sm font-medium mb-1.5" style="color:var(--text-label)">
-            ${field.label} ${field.required ? '<span style="color:#ec4899">*</span>' : ''}
-          </label>
-          <input type="${field.type}" name="${field.name}" ${req} placeholder="${field.placeholder}"
-            class="${baseClass}">
-        </div>`;
-    }).join('');
-
     $('contact').innerHTML = `
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-14 observe-fade">
           <h2 class="text-3xl sm:text-4xl font-black mb-3" style="color:var(--text-primary)">${contact.sectionTitle}</h2>
           <p class="max-w-xl mx-auto" style="color:var(--text-secondary)">${contact.sectionSubtitle}</p>
           <div class="mt-4 mx-auto w-16 h-1 rounded-full" style="background:linear-gradient(to right,#7c3aed,#ec4899)"></div>
         </div>
 
-        <div class="grid md:grid-cols-5 gap-10">
-          <div class="md:col-span-2 observe-fade">
-            <div class="rounded-2xl p-6 h-full" style="background:var(--bg-contact-info)">
-              <h3 class="font-bold text-lg mb-6" style="color:var(--text-primary)">聯絡方式</h3>
-              <div class="flex flex-col gap-5">${infoHtml}</div>
-              <div class="mt-8 pt-6" style="border-top:1px solid var(--border-contact)">
-                <p class="text-xs" style="color:var(--text-muted)">⏱ ${contact.responseTime}</p>
-              </div>
-            </div>
-          </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          ${infoHtml}
+        </div>
 
-          <div class="md:col-span-3 observe-fade">
-            <form id="contact-form" class="rounded-2xl border p-6 sm:p-8 flex flex-col gap-5"
-              style="background:var(--bg-card); border-color:var(--border-card); box-shadow:var(--shadow-card)"
-              action="${contact.formspreeEndpoint}" method="POST">
-              ${fieldsHtml}
-              <button type="submit" id="form-submit-btn"
-                class="btn-primary text-white font-bold py-3.5 rounded-xl shadow-lg text-sm mt-2 flex items-center justify-center gap-2">
-                <span id="form-btn-text">送出訊息</span>
-                <svg id="form-spinner" class="w-4 h-4 animate-spin hidden" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                </svg>
-              </button>
-              <div id="form-success" class="hidden rounded-xl px-4 py-3 text-sm text-center"
-                style="background:#f0fdf4; border:1px solid #bbf7d0; color:#15803d">
-                ✅ 感謝您的訊息！我會盡快與您聯繫。
-              </div>
-              <div id="form-error" class="hidden rounded-xl px-4 py-3 text-sm text-center"
-                style="background:#fef2f2; border:1px solid #fecaca; color:#dc2626">
-                ❌ 送出失敗，請直接寄信至 <a href="mailto:${contact.email}" class="underline">${contact.email}</a>
-              </div>
-            </form>
-          </div>
+        <div class="mt-10 text-center observe-fade">
+          <p class="text-sm" style="color:var(--text-muted)">⏱ ${contact.responseTime}</p>
         </div>
       </div>
     `;
-
-    $('contact-form').addEventListener('submit', (e) => handleFormSubmit(e, contact.formspreeEndpoint));
-  }
-
-  async function handleFormSubmit(e, endpoint) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = $('form-submit-btn');
-    const success = $('form-success');
-    const error = $('form-error');
-
-    btn.disabled = true;
-    $('form-spinner').classList.remove('hidden');
-    $('form-btn-text').textContent = '送出中...';
-    success.classList.add('hidden');
-    error.classList.add('hidden');
-
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' },
-      });
-      if (res.ok) {
-        form.reset();
-        success.classList.remove('hidden');
-        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } else throw new Error();
-    } catch {
-      error.classList.remove('hidden');
-    } finally {
-      btn.disabled = false;
-      $('form-spinner').classList.add('hidden');
-      $('form-btn-text').textContent = '送出訊息';
-    }
   }
 
   // ── Footer ────────────────────────────────────────────
