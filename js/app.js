@@ -371,9 +371,9 @@
         </div>
         <p class="text-xs font-medium" style="color:var(--text-muted)">${item.label}</p>
         ${item.href
-          ? `<a href="${item.href}" class="font-semibold text-center transition-colors" style="color:var(--text-primary)"
+          ? `<a href="${item.href}" class="font-semibold text-center break-all transition-colors" style="color:var(--text-primary)"
               onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='var(--text-primary)'">${item.value}</a>`
-          : `<p class="font-semibold text-center" style="color:var(--text-primary)">${item.value}</p>`
+          : `<p class="font-semibold text-center break-all" style="color:var(--text-primary)">${item.value}</p>`
         }
       </div>
     `).join('');
