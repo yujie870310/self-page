@@ -24,7 +24,7 @@
     "avatar": "assets/images/avatar.jpg",
     "avatarAlt": "許瑀婕個人照",
     "ctaButtons": [
-      { "label": "查看作品集", "href": "#portfolio", "style": "primary" },
+      { "label": "精選作品集", "href": "#portfolio", "style": "primary" },
       { "label": "立即聯絡", "href": "#contact", "style": "secondary" }
     ],
     "socialLinks": [
