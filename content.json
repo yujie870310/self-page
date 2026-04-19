@@ -116,21 +116,21 @@
       },
       {
         "id": "s002",
-        "icon": "heart",
-        "title": "婚禮影片製作",
-        "description": "完整記錄婚禮中的每個感動瞬間，精心剪輯成永久珍藏的影像故事。",
-        "features": ["精華版 5~8 分鐘", "完整版影片", "調色處理", "背景音樂授權"],
-        "price": "起價 NT$15,000",
-        "highlighted": true
-      },
-      {
-        "id": "s003",
         "icon": "play",
         "title": "YouTube 頻道後製",
         "description": "Vlog、教學、開箱等內容定期剪輯，幫助 YouTuber 維持穩定更新頻率。",
         "features": ["月固定方案", "縮圖設計", "片頭/片尾製作", "字幕製作"],
         "price": "月費方案 NT$5,000 起",
         "highlighted": true
+      },
+      {
+        "id": "s003",
+        "icon": "heart",
+        "title": "婚禮影片製作",
+        "description": "完整記錄婚禮中的每個感動瞬間，精心剪輯成永久珍藏的影像故事。",
+        "features": ["精華版 5~8 分鐘", "完整版影片", "調色處理", "背景音樂授權"],
+        "price": "起價 NT$15,000",
+        "highlighted": false
       },
       {
         "id": "s004",
